@@ -84,7 +84,7 @@ const PokemonCard = ({ id, image, name, type }) => {
           {hovered &&
             pd.map((stats, i) => {
               // stats[i].base_stat;
-              console.log(stats);
+              // console.log(stats);
               {
                 <div>
                   <h1>{stats.stat.name}</h1>
