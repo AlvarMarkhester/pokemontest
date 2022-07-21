@@ -30,7 +30,6 @@ function App() {
           `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
         );
         const individualResult = await res.json();
-        // console.log(individualResult);
         setAllPokemons((currentList) => [...currentList, individualResult]);
       });
     }
@@ -52,7 +51,6 @@ function App() {
 
   const handleLoginSuccess = (response) => {
     console.log("Login Success ", response);
-    // setUser(response.profileObj);
     setUser(true);
     setLoading();
   };

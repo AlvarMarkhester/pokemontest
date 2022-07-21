@@ -37,7 +37,7 @@ const PokemonCard = ({ id, image, name, type }) => {
               {
                 <div>
                   <h1>{stats.stat.name}</h1>
-                  <h1>hello</h1>
+                  {/* <h1>hello</h1> */}
                   <ProgressBar completed={stats.base_start} />
                 </div>;
               }

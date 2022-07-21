@@ -3,8 +3,8 @@ import React from "react";
 import Progress from "react-progressbar";
 
 const ProgressBar = (props) => {
-  console.log(props);
-  console.log("progressbar is called");
+  // console.log(props);
+  // console.log("progressbar is called");
   return (
     <div>
       {" "}
