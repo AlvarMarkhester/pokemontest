@@ -20,16 +20,14 @@ function App() {
   const getAllPokemons = async () => {
     const res = await fetch(load);
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     setLoad(data.next);
 
     function getPokemonObj(results) {
-      results.forEach(async (pokemon) => {
-        // console.log(pokemon.name);
-        const res = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-        );
+      results.map(async (pokemon) => {
+        const res = await fetch(pokemon.url);
         const individualResult = await res.json();
+        console.log(individualResult)
         setAllPokemons((currentList) => [...currentList, individualResult]);
       });
     }
@@ -42,7 +40,6 @@ function App() {
 
   const inputHandler = (e) => {
     setSearch(e.target.value);
-    e.preventDeault();
   };
 
   const filteredPokemons = allPokemons.filter((pokemon) => {
@@ -79,44 +76,13 @@ function App() {
 
   return (
     <>
-      <Header />
-      <div className="login">
-        <h2>
-          Pokemon Login -{" "}
-          <a href="" target="_blank" rel="noopener noreferrer"></a>
-        </h2>
-        {user ? (
-          <div>
-            <div className="name">Welcome {user.name}!</div>
-            <GoogleLogout
-              clientId={clientId}
-              onLogoutSuccess={handleLogoutSuccess}
-              onFailure={handleLogoutFailure}
-            />
-            <pre>{JSON.stringify(user, null, 2)}</pre>
-          </div>
-        ) : (
-          <GoogleLogin
-            clientId={clientId}
-            buttonText={loading}
-            onSuccess={handleLoginSuccess}
-            onFailure={handleLoginFailure}
-            onRequest={handleRequest}
-            onAutoLoadFinished={handleAutoLoadFinished}
-            isSignedIn={true}
-          />
-        )}
-      </div>
-
       <div className="app-container">
-        <form>
-          <input
-            className="pokemon-input"
-            type="text"
-            placeholder="Search a pokemon"
-            onChange={inputHandler}
-          />
-        </form>
+        <input
+          className="pokemon-input"
+          type="text"
+          placeholder="Search a pokemon"
+          onChange={inputHandler}
+        />
         <div className="pokemon-container">
           <h1>Pokemons</h1>
           {/* <ProgressBar /> */}
@@ -124,12 +90,12 @@ function App() {
             {filteredPokemons &&
               filteredPokemons.map((pokemon, index) => (
                 <PokemonCard
-                  key={index}
-                  // id={pokemon.id}
-                  id={index + 1}
+                  key={pokemon.id}
+                  id={pokemon.id}
                   image={pokemon.sprites.other.dream_world.front_default}
                   name={pokemon.name}
                   type={pokemon.types[0].type.name}
+                  stats={pokemon.stats}
                 />
               ))}
             <button className="load-more" onClick={() => getAllPokemons()}>
