@@ -219,6 +219,7 @@ h3 {
 }
 .progress-bar {
   margin: 5px;
+  overflow: hidden;
 }
 .load-more {
   background: #f5f5f5 linear-gradient(#f5f5f5, #f1f1f1) repeat-x;

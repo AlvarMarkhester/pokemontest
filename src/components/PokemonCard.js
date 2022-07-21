@@ -5,7 +5,6 @@ const PokemonCard = ({ id, image, name, type, stats }) => {
   const [hovered, setHovered] = useState(false);
 
   const style = type + " thumb-container";
-  // console.log(style + "hovered");
   const setHover = () => {
     setHovered(true);
   };
@@ -18,16 +17,16 @@ const PokemonCard = ({ id, image, name, type, stats }) => {
       {!hovered ? (
 
         <><img src={image} alt={name} />
-        <div className="detail-wrapper">
-          <div>
-            <small>#0{id}</small>
-          </div>
+          <div className="detail-wrapper">
+            <div>
+              <small>#0{id}</small>
+            </div>
 
-          <div>
-            <h3>{name}</h3>
-            <h3>{type}</h3>
+            <div>
+              <h3>{name}</h3>
+              <h3>{type}</h3>
+            </div>
           </div>
-        </div>
         </>
       ) : (
         stats.map((stats) => (
@@ -43,18 +42,3 @@ const PokemonCard = ({ id, image, name, type, stats }) => {
 };
 
 export default PokemonCard;
-{
-  /* <div>
-{hovered && (
-  <div className={style}>
-    {pd.map((stats, i) => (
-      <div className="detail-wrapper">
-        <span>{stats.stat.name}</span>
-        {/* {stats.base_start} */
-}
-/*<ProgressBar completed={Number(stats.base_stat)} />*/
-//       </div>
-//     ))}
-//   </div>
-// )}
-// </div>
