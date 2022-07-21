@@ -14,6 +14,13 @@ body {
   /* background: linear-gradeint(#e2f9e1, #fbe3df); */
   /* background-color: rgb(223, 177, 106); */
   background-color: #e2f9e1;
+  background: linear-gradient(
+    to top left,
+    /* #73bc71, */ rgba(255, 192, 203, 0.863),
+    to top right,
+    #97d995e3
+  );
+
   /* background-color: hsl(0, 0%, 90%); */
   /* background: #0e0e0e; */
 }
