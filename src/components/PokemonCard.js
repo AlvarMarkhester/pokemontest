@@ -6,46 +6,70 @@ const PokemonCard = ({ id, image, name, type }) => {
   const [pd, setPd] = useState([]);
 
   const style = type + " thumb-container";
+  // console.log(style + "hovered");
   const getStats = async () => {
+    console.log("we are here");
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     const detailedStats = await res.json();
     setPd(detailedStats.stats);
     setHovered(true);
   };
+  console.log(pd);
   return (
     <>
-      <div
-        className={style}
-        onMouseEnter={getStats}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <div className="number"></div>
-        <img src={image} alt={name} />
-        <div className="detail-wrapper">
-          <div>
-            <small>#0{id}</small>
-          </div>
+      {!hovered ? (
+        <div
+          className={style}
+          onMouseEnter={getStats}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <img src={image} alt={name} />
 
-          <div>
-            <h3>{name}</h3>
-            <h3>{type}</h3>
+          <div className="detail-wrapper">
+            <div>
+              <small>#0{id}</small>
+            </div>
+
+            <div>
+              <h3>{name}</h3>
+              <h3>{type}</h3>
+            </div>
           </div>
         </div>
-        <div>
-          {hovered &&
-            pd.map((stats, i) => {
-              {
-                <div>
-                  <h1>{stats.stat.name}</h1>
-                  {/* <h1>hello</h1> */}
-                  <ProgressBar completed={stats.base_start} />
-                </div>;
-              }
-            })}
+      ) : (
+        <div className={style + "hovered"}>
+          <div
+            className={style}
+            onMouseEnter={getStats}
+            onMouseLeave={() => setHovered(false)}
+          >
+            {pd.map((stats, i) => (
+              <div className="detail-wrapper">
+                <span>{stats.stat.name}</span>
+                {/* {stats.base_start} */}
+                <ProgressBar completed={Number(stats.base_stat)} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
 
 export default PokemonCard;
+{
+  /* <div>
+{hovered && (
+  <div className={style}>
+    {pd.map((stats, i) => (
+      <div className="detail-wrapper">
+        <span>{stats.stat.name}</span>
+        {/* {stats.base_start} */
+}
+/*<ProgressBar completed={Number(stats.base_stat)} />*/
+//       </div>
+//     ))}
+//   </div>
+// )}
+// </div>

@@ -148,6 +148,24 @@ code {
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.552);
   /* z-index: 0; */
 }
+
+.thumb-containerhovered {
+  background-color: #444;
+}
+
+.thumb-containerhovered .number {
+  border-radius: 1rem;
+  padding: 0.2rem 0.4rem;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.thumb-containerhovered .detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.thumb-containerhovered small {
+  text-transform: capitalize;
+}
 small {
   background-color: rgba(0, 0, 0, 0.486);
   color: white;

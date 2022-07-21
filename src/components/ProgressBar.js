@@ -8,7 +8,7 @@ const ProgressBar = (props) => {
   return (
     <div>
       {" "}
-      <div>progrees bar</div>
+      {/* <div>progrees bar</div> */}
       <Progress completed={props.completed} />
     </div>
   );
