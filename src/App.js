@@ -7,7 +7,7 @@ import { GoogleLogin, GoogleLogout } from "react-google-login";
 import ProgressBar from "./components/ProgressBar";
 
 const clientId = process.env.REACT_CLIENT_ID;
-
+//
 function App() {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loading, setLoading] = useState("Loading...");
